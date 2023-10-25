@@ -70,53 +70,45 @@ export const MySkills = () => {
 
         <ul className="language-container">
           <li>
-            <h2 className="skills-sub-heading">Languages & Qualifications</h2>
+            <h2 className="skills-sub-heading">Languages</h2>
           </li>
           <li>
             <h4>Javascript</h4>
           </li>
           <li>
+            <h4>Typescript</h4>
+          </li>
+          <li>
             <h4>Regular Expression</h4>
           </li>
+        </ul>
+        <img className="about-me-main-img" src={pc} />
+
+        <ul className="qualifications-container">
+          <h2 className="skills-sub-heading">Qualifications</h2>
           <li>
             <h4>Business and Management Degree</h4>
           </li>
           <li>
             <h4>Coding Bootcamp</h4>
           </li>
+          <li>
+            <h4>PRINCE2</h4>
+          </li>
         </ul>
-        <div className="brief-description-container">
-          <img className="about-me-main-img" src={pc} />
-          <div className="about-me-breakdown-container">
-            <h2 className="about-sub-heading">About Me</h2>
-            <p>
-              With a deep understanding of modern web technologies and a keen
-              eye for design, I bring creativity and functionality together to
-              create stunning and user-friendly websites. I take great pride in
-              crafting clean and efficient code, leveraging my expertise in CSS
-              to create visually appealing designs, JavaScript to add dynamic
-              and interactive elements, and React to develop efficient and
-              scalable projects.
-            </p>
-            <div className="about-me-links">
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/mohammed-amaan-mughal-534513207/"
-              >
-                <img className="about-me-img" src={linkedInIcon} />
-                <p>LinkedIn</p>
-              </a>
-              <a href="../assets/cv/AmaanMughalCVpdf.pdf">
-                <img className="about-me-img" src={cvIcon} />
-                <p>CV</p>
-              </a>
-              <a>
-                <img className="about-me-img" src={gitIcon} />
-                <p>Github</p>
-              </a>
-            </div>
-          </div>
-        </div>
+
+        <ul className="other-skills-container">
+          <h2 className="skills-sub-heading">Other Skills</h2>
+          <li>
+            <h4>Git / GitHub</h4>
+          </li>
+          <li>
+            <h4>Netlify</h4>
+          </li>
+          <li>
+            <h4>Microsoft Office</h4>
+          </li>
+        </ul>
       </div>
     </div>
   );

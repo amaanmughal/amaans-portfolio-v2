@@ -49,6 +49,32 @@
   }
 }
 
+@mixin button-universal {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+
+  &:link {
+    color: black;
+  }
+
+  &:hover {
+    color: orange;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    color: purple;
+  }
+  &:visited {
+    border-color: black;
+  }
+}
+
 .page-heading {
   @include span-3-columns;
   font-family: "Handjet", cursive;
@@ -75,7 +101,7 @@
     text-decoration: none;
     color: white;
     &:hover {
-      color: violet;
+      color: orange;
     }
     &:active {
       color: purple;
@@ -87,7 +113,56 @@
 
 .section-container-main-landing {
   background-color: purple;
-  @include container-viewport;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+
+  padding: 60px;
+
+  #landing-page-grid {
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+    width: 900px;
+    .landing-page-middle-row {
+      display: grid;
+      text-align: center;
+      color: white;
+      p {
+        font-size: 20px;
+        span {
+          font-weight: bold;
+          color: orange;
+        }
+      }
+      .landing-page-links {
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+        a {
+          display: flex;
+          @include button-universal;
+          width: 120px;
+          height: 45px;
+          p {
+            align-self: center;
+            margin: 0;
+          }
+          img {
+            width: 40px;
+            height: 40px;
+            align-self: center;
+          }
+        }
+      }
+    }
+  }
+  .landing-page-bottom-row {
+    display: grid;
+    #image-landing-page {
+      width: 230px;
+      justify-self: center;
+    }
+  }
 }
 
 #amaan_typewrite {
@@ -106,12 +181,6 @@
   color: orange;
 }
 
-#image-landing-page {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-}
-
 /*----- MY SKILLS -----*/
 
 #skills-span {
@@ -127,84 +196,15 @@
     grid-template-rows: 1fr 3fr 3fr;
     height: 100%;
 
-    .brief-description-container {
-      grid-column-start: 1;
-      grid-column-end: 4;
-      display: grid;
-      grid-template-columns: 2fr 5fr;
-
-      background-color: white;
-
-      height: 95%;
-      width: 98%;
+    .about-me-main-img {
+      grid-column-start: 2;
+      grid-row-start: 3;
+      width: 250px;
+      height: 250px;
+      border-radius: 100%;
+      border: 2px solid;
       align-self: center;
       justify-self: center;
-
-      margin: 10px;
-      border-radius: 20px;
-
-      .about-me-main-img {
-        width: 200px;
-        height: 200px;
-        border-radius: 100%;
-        border: 2px solid;
-        align-self: center;
-        justify-self: center;
-      }
-
-      .about-me-breakdown-container {
-        margin: 0 40px;
-        display: grid;
-        grid-template-rows: 1fr 2fr 1fr;
-
-        .about-sub-heading {
-          font-weight: bold;
-          text-decoration: underline;
-          text-decoration-color: orange;
-          text-align: center;
-        }
-
-        .about-me-links {
-          font-weight: bold;
-          display: flex;
-          gap: 10px;
-          align-self: center;
-          a {
-            display: inline-flex;
-            width: 150px;
-            height: 50px;
-            background-color: lightgray;
-            border-radius: 5px;
-            border: 2px solid;
-            text-align: center;
-            text-decoration: none;
-            color: black;
-
-            &:link {
-              color: black;
-            }
-
-            &:hover {
-              color: orange;
-            }
-
-            &:active {
-              color: purple;
-            }
-
-            p {
-              font-weight: bold;
-              align-self: center;
-              margin: 0px;
-            }
-            img {
-              width: 30px;
-              height: 30px;
-              align-self: center;
-            }
-          }
-        }
-      }
     }
 
     .front-end-container {
@@ -216,6 +216,14 @@
     }
 
     .back-end-container {
+      grid-column-start: 1;
+      grid-row-start: 3;
+      grid-row-end: 4;
+
+      @include skills-container-format;
+    }
+
+    .language-container {
       grid-column-start: 2;
       grid-row-start: 2;
       grid-row-end: 3;
@@ -223,10 +231,18 @@
       @include skills-container-format;
     }
 
-    .language-container {
+    .qualifications-container {
       grid-column-start: 3;
       grid-row-start: 2;
       grid-row-end: 3;
+
+      @include skills-container-format;
+    }
+
+    .other-skills-container {
+      grid-column-start: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
 
       @include skills-container-format;
     }
@@ -236,14 +252,95 @@
 /*----- PROJECTS -----*/
 
 .section-container-projects {
-  background-color: fuchsia;
-  @include container-viewport;
+  background-color: purple;
+  width: 100%;
+  padding: 60px;
+}
+
+#projects-span {
+  color: orange;
+}
+
+#projects-display {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+
+  #project-1,
+  #project-2,
+  #project-3 {
+    display: grid;
+    padding: 20px;
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 20px;
+    width: 97%;
+
+    .project-sub-headings {
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-color: purple;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .project-2-grid {
+      display: grid;
+      grid-template-columns: 500px 1fr;
+      img {
+        width: 70%;
+        justify-self: center;
+      }
+      .project-description-and-lang {
+        display: grid;
+        p {
+          .span-projects {
+            font-weight: bold;
+            color: purple;
+          }
+        }
+        .project-buttons {
+          justify-self: center;
+          a {
+            padding: 7px 15px;
+            margin: 0 10px;
+            @include button-universal;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*----- FOOTER -----*/
 
 footer {
-  height: 50vh;
+  width: 100%;
+  padding: 60px;
+  background-color: black;
+
+  .get-in-touch-heading {
+    font-family: "Handjet", cursive;
+    font-weight: bold;
+    font-size: 50px;
+    color: orange;
+    span {
+      color: purple;
+    }
+
+    text-align: center;
+  }
+
+  form {
+    background-color: white;
+    padding: 40px 40px 20px 40px;
+    border-radius: 20px;
+  }
+  .button-submit {
+    margin-top: 40px;
+    height: 40px;
+    width: 80px;
+    @include button-universal;
+  }
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
